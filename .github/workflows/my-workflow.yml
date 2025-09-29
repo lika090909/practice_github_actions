@@ -7,4 +7,6 @@ jobs:
         steps:
             - name: Hello cats
               run: echo "The first command"
+            - name: Hello dogs
+              run: cat README.md
             
