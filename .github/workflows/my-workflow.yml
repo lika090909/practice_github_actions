@@ -7,6 +7,9 @@ jobs:
         steps:
             - name: Hello cats
               run: echo "The first command"
+            - name: Checkout 
+              uses: actions/checkout@v5
+              
             - name: Hello dogs
               run: cat README.md
             
