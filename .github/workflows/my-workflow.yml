@@ -24,6 +24,15 @@ jobs:
                      sudo chmod +x file.sh
                      ls -l
                      ./file.sh
+
+    second_job: 
+        steps:
+             
+             -name: Cat job
+            run:  | 
+                    sudo chmod +x cat.sh
+                     ls -l
+                     ./cat.sh
               
 
             
