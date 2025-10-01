@@ -26,13 +26,14 @@ jobs:
                      ./file.sh
 
     second_job: 
+        runs-on: ubuntu-latest
         steps:
              
-             -name: Cat job
-            run:  | 
+             - name: Cat job
+               run:  | 
                     sudo chmod +x cat.sh
-                     ls -l
-                     ./cat.sh
+                    ls -l
+                    ./cat.sh
               
 
             
