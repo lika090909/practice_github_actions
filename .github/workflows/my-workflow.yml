@@ -12,9 +12,9 @@ jobs:
               
             - name: Hello dogs
               run:  | 
-                  cat README.md
-                  sudo mkdir /cats
-                  echo "cats are the best" >> /cats/cat.txt
-                  ls /cats
+                    cat README.md
+                    sudo mkdir /cats
+                    echo "cats are the best" | sudo tee /cats/cat.txt
+                    ls -l /cats
 
             
