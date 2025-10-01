@@ -15,6 +15,7 @@ jobs:
                   cat README.md
                   sudo mkdir /cats
                   echo "cats are the best" >> /cats/cat.txt
+                  chmod 644 cats/cat.txt
                   ls /cats
 
             
