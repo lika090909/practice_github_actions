@@ -13,8 +13,8 @@ jobs:
             - name: Hello dogs
               run:  | 
                     cat README.md
-                    sudo mkdir /cats
-                    echo "cats are the best" | sudo tee /cats/cat.txt
+                    sudo mkdir /cats 
+                    echo -e "\ncats are the best" | sudo tee /cats/cat.txt
                     ls -l /cats
 
             
