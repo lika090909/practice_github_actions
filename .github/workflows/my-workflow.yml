@@ -31,8 +31,9 @@ jobs:
              
              - name: Cat job
                run:  | 
+                    ls -la
                     sudo chmod +x cat.sh
-                    ls -l
+                    ls -la
                     ./cat.sh
               
 
