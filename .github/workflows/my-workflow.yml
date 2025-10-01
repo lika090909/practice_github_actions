@@ -11,5 +11,10 @@ jobs:
               uses: actions/checkout@v5
               
             - name: Hello dogs
-              run: cat README.md
+              run:  | 
+                  cat README.md
+                  sudo mkdir /cats
+                  echo "cats are the best" >> /cats/cat.txt
+                  ls /cats
+
             
