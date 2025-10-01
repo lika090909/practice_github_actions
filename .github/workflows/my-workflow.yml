@@ -17,4 +17,8 @@ jobs:
                     echo -e "\ncats are the best" | sudo tee /cats/cat.txt
                     ls -l /cats
 
+            - name:  Executing Shell
+              run :  ./file.sh
+              
+
             
