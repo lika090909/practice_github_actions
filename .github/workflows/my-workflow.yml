@@ -13,7 +13,7 @@ jobs:
             - name: Hello dogs
               run:  | 
                   cat README.md
-                  mkdir /cats
+                  sudo mkdir /cats
                   echo "cats are the best" >> /cats/cat.txt
                   ls /cats
 
