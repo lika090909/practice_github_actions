@@ -28,6 +28,8 @@ jobs:
     second_job: 
         runs-on: ubuntu-latest
         steps:
+             - name: Checkout 
+              uses: actions/checkout@v5
              
              - name: Cat job
                run:  | 
