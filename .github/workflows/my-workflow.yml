@@ -22,7 +22,8 @@ jobs:
                      pwd
                      ls -la
                      sudo chmod +x file.sh
-                     file.sh
+                     ls -l
+                     ./file.sh
               
 
             
