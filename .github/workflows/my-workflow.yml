@@ -18,7 +18,9 @@ jobs:
                     ls -l /cats
 
             - name:  Executing Shell
-              run :  ./file.sh
+              run : |
+                     chmod +x ./file.sh
+                     ./file.sh
               
 
             
