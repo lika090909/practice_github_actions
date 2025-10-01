@@ -19,8 +19,8 @@ jobs:
 
             - name:  Executing Shell
               run : |
-                     sudo chmod +x ./file.sh
-                     ./file.sh
+                     sudo chmod +x file.sh
+                     file.sh
               
 
             
