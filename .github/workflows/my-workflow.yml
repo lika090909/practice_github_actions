@@ -19,6 +19,7 @@ jobs:
 
             - name:  Executing Shell
               run : |
+                     pwd
                      sudo chmod +x file.sh
                      file.sh
               
