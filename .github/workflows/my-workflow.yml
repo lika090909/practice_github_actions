@@ -54,7 +54,7 @@ jobs:
                  path: tiger   # the path we want our file to be saved
 
              - name: Read file
-               run: cat tiger/Downloaded_cat.txt
+               run: cat tiger/cat.txt
                
               
 
