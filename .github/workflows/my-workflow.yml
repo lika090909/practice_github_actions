@@ -21,7 +21,7 @@ jobs:
       - name: Upload cat.txt
         uses: actions/upload-artifact@v4
         with:
-          name: Downloaded_cat.txt    # unique artifact name
+          name: Downloaded_cat_${{ github.run_id }}     # unique artifact name
           path: /cats/cat.txt                           # file to upload
 
       - name: Executing Shell
@@ -29,7 +29,6 @@ jobs:
           pwd
           ls -la
           sudo chmod +x file.sh
-          ls -
           ./file.sh
 
   second_job:
