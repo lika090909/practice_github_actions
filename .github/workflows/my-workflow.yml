@@ -13,9 +13,15 @@ jobs:
             - name: Hello dogs
               run:  | 
                     cat README.md
-                    sudo mkdir /dogs
+                    sudo mkdir /cats
                     echo -e "\ncats are the best" | sudo tee /cats/cat.txt
                     ls -l /cats
+
+            - name: Upload cat.txt
+              uses:  actions/upload-artifact@v5
+              with: 
+                 name: Downloaded_cat.txt    # new file name we want to have
+                 path: cat.txt               # Path to the existing file
 
             - name:  Executing Shell
               run : |
