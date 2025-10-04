@@ -44,7 +44,7 @@ jobs:
                     sudo chmod +x cat.sh
                     ls -la
                     ./cat.sh
-                    mkdir /tiger
+                    sudo mkdir /tiger
              - name: Download cat.txt
                uses: actions/download-artifact@v5
                with:
