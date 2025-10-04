@@ -20,7 +20,7 @@ jobs:
             - name: Upload cat.txt
               uses:  actions/upload-artifact@v4
               with: 
-                 name: Downloaded_cat.txt    # new file name we want to have
+                 name: Downloaded_cat_${{ github.run_id }}   # new file name we want to have
                  path: /cats/cat.txt               # Path to the existing file
 
             - name:  Executing Shell
@@ -50,7 +50,7 @@ jobs:
              - name: Download cat.txt
                uses: actions/download-artifact@v5
                with:
-                 name: Downloaded_cat.txt
+                 name: Downloaded_cat_${{ github.run_id }}
                  path: tiger   # the path we want our file to be saved
 
              - name: Read file
