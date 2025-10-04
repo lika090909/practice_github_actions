@@ -44,16 +44,17 @@ jobs:
                     sudo chmod +x cat.sh
                     ls -la
                     ./cat.sh
-                    sudo mkdir /tiger
+                    pwd
+                    sudo mkdir tiger
                     ls -la
              - name: Download cat.txt
                uses: actions/download-artifact@v5
                with:
                  name: Downloaded_cat.txt
-                 path: /tiger   # the path we want our file to be saved
+                 path: tiger   # the path we want our file to be saved
 
              - name: Read file
-               run: cat /tiger/Downloaded_cat.txt
+               run: cat tiger/Downloaded_cat.txt
                
               
 
