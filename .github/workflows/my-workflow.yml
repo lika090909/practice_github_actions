@@ -2,60 +2,56 @@ name: My First Workflow
 on: push
 
 jobs:
-    first_job:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Hello cats
-              run: echo "The first command"
-            - name: Checkout 
-              uses: actions/checkout@v5
+  first_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello cats
+        run: echo "The first command"
+
+      - name: Checkout
+        uses: actions/checkout@v5
               
-            - name: Hello dogs
-              run:  | 
-                    cat README.md
-                    sudo mkdir /cats
-                    echo -e "\ncats are the best" | sudo tee /cats/cat.txt
-                    ls -l /cats
+      - name: Hello dogs
+        run: |
+          cat README.md
+          sudo mkdir /cats
+          echo -e "\ncats are the best" | sudo tee /cats/cat.txt
+          ls -l /cats
 
-            - name: Upload cat.txt
-              uses:  actions/upload-artifact@v4
-              with: 
-                 name: Downloaded_cat_${{ github.run_id }}   # new file name we want to have
-                 path: /cats/cat.txt               # Path to the existing file
+      - name: Upload cat.txt
+        uses: actions/upload-artifact@v4
+        with:
+          name: Downloaded_cat_${{ github.run_id }}     # unique artifact name
+          path: /cats/cat.txt                           # file to upload
 
-            - name:  Executing Shell
-              run : |
-                     pwd
-                     ls -la
-                     sudo chmod +x file.sh
-                     ls -l
-                     ./file.sh
+      - name: Executing Shell
+        run: |
+          pwd
+          ls -la
+          sudo chmod +x file.sh
+          ./file.sh
 
-    second_job: 
-        needs: first_job
-        runs-on: ubuntu-latest
-        steps:
-             - name: Checkout 
-               uses: actions/checkout@v5
-             
-             - name: Cat job
-               run:  | 
-                    ls -la
-                    sudo chmod +x cat.sh
-                    ls -la
-                    ./cat.sh
-                    pwd
-                    sudo mkdir tiger
-                    ls -la
-             - name: Download cat.txt
-               uses: actions/download-artifact@v5
-               with:
-                 name: Downloaded_cat_${{ github.run_id }}
-                 path: tiger   # the path we want our file to be saved
+  second_job:
+    needs: first_job            # ensures first job completes first
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
 
-             - name: Read file
-               run: cat tiger/cat.txt
-               
-              
+      - name: Prepare folder
+        run: |
+          mkdir -p tiger
+          echo "Created folder tiger"
+          ls -la
 
-            
+      - name: Download cat.txt
+        uses: actions/download-artifact@v4              # <-- switched to stable v4
+        with:
+          name: Downloaded_cat_${{ github.run_id }}
+          path: tiger
+
+      - name: Verify files
+        run: ls -R tiger
+
+      - name: Read file
+        run: cat tiger/cat.txt
