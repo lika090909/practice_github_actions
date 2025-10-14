@@ -21,6 +21,7 @@ jobs:
               run: | 
                echo $ANIMAL
                echo $BIRD
+               echo $lala
 
         
 
