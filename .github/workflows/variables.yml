@@ -6,25 +6,24 @@ on:
 
 jobs:
     job_name_1: 
+        env: 
+            ANIMAL: cat
+            BIRD: parrot
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout repo
-              uses: actions/checkout@v5
+        - name: Checkout repo
+          uses: actions/checkout@v5
 
-            - name: Variables
-              env: 
-                 ANIMAL: cat
-                 BIRD: parrot
-              run: | 
-               echo $ANIMAL
-               echo $BIRD
-               
-       
-            - name: Variable check
-              run: | 
-               echo $ANIMAL
-               echo $BIRD
-               echo $lala
+        - name: Variables
+          run: | 
+                echo $ANIMAL
+                echo $BIRD
+      
+        - name: Variable check
+          run: | 
+                echo $ANIMAL
+                echo $BIRD
+            
 
         
 
