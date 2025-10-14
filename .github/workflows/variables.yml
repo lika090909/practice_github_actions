@@ -1,5 +1,8 @@
 name: Variables
-on:  push
+on:
+  push:
+    branches:
+      - feat/new-testing
 
 jobs:
     job_name_1: 
