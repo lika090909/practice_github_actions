@@ -3,12 +3,13 @@ on:
   push:
     branches:
       - feat/new-testing
+env: 
+            ANIMAL: cat
+            BIRD: parrot
 
 jobs:
     job_name_1: 
-        env: 
-            ANIMAL: cat
-            BIRD: parrot
+        
         runs-on: ubuntu-latest
         steps:
         - name: Checkout repo
@@ -23,6 +24,17 @@ jobs:
           run: | 
                 echo $ANIMAL
                 echo $BIRD
+
+    job_name_2:
+        runs-on: ubuntu-latest
+        steps:
+
+        - name: Variables
+          run: | 
+                echo $ANIMAL
+                echo $BIRD
+
+
             
 
         
