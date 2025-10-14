@@ -1,0 +1,26 @@
+name: Variables
+on:  push
+
+jobs:
+    job_name_1: 
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repo
+              run: actions/checkout@v5
+
+            - name: Variables
+              env: 
+                 ANIMAL: cat
+                 BIRD: parrot
+              run: | 
+               echo $ANIMAL
+               echo $BIRD
+               
+       
+            - name: Variable check
+              run: | 
+               echo $ANIMAL
+               echo $BIRD
+
+        
+
