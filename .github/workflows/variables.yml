@@ -34,6 +34,15 @@ jobs:
                 echo $ANIMAL
                 echo $BIRD
 
+    job_name_3:
+        runs-on: ubuntu-latest
+        steps:
+
+        - name: Print a secret
+          run: | 
+                echo ${{ env.Secret }}
+                echo $BIRD
+
 
             
 
