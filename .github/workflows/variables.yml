@@ -50,7 +50,7 @@ jobs:
         steps:
         - name: Print a variable
           env: 
-              SECRET: ${{ vars.secret2 }}
+              SECRET2: ${{ vars.secret2 }}
           run: | 
                 echo $SECRET2
                 echo $BIRD
