@@ -40,7 +40,7 @@ jobs:
 
         - name: Print a secret
           run: | 
-                echo ${{ env.Secret }}
+                echo ${{ vars.Secret }}
                 echo $BIRD
 
 
