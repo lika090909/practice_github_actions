@@ -37,10 +37,12 @@ jobs:
     job_name_3:
         runs-on: ubuntu-latest
         steps:
-
         - name: Print a secret
+          env: 
+              SECRET: ${{ vars.Secret }}
           run: | 
-                echo ${{ vars.Secret }}
+                
+                echo $SECRET
                 echo $BIRD
 
 
