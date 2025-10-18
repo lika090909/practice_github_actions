@@ -1,8 +1,7 @@
 name: Variables
 on:
-  push:
-    branches:
-      - feat/new-testing
+   schedule:
+     - cron: "0 4 * * *"
 env: 
             ANIMAL: cat
             BIRD: parrot
