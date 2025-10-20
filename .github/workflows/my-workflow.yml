@@ -1,6 +1,19 @@
 name: My First Workflow
 on:
   workflow_dispatch:
+    inputs:
+      animal:
+        description: "Type of animal to write in file"
+        required: true
+        default: "cat"
+      folder:
+        description: "Name of the folder to create in the second job"
+        required: true
+        default: "tiger"
+
+env:
+  ANIMAL: ${{ github.event.inputs.animal }}
+  FOLDER: ${{ github.event.inputs.folder }}
 
 jobs:
   first_job:
@@ -16,14 +29,14 @@ jobs:
         run: |
           cat README.md
           sudo mkdir /cats
-          echo -e "\ncats are the best" | sudo tee /cats/cat.txt
+          echo -e "\n${ANIMAL}s are the best" | sudo tee /cats/cat.txt
           ls -l /cats
 
       - name: Upload cat.txt
         uses: actions/upload-artifact@v4
         with:
-          name: Downloaded_cat_${{ github.run_id }}     # unique artifact name
-          path: /cats/cat.txt                           # file to upload
+          name: Downloaded_${{ env.ANIMAL }}_${{ github.run_id }}   # artifact name uses input
+          path: /cats/cat.txt
 
       - name: Executing Shell
         run: |
@@ -33,7 +46,7 @@ jobs:
           ./file.sh
 
   second_job:
-    needs: first_job            # ensures first job completes first
+    needs: first_job
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -41,18 +54,18 @@ jobs:
 
       - name: Prepare folder
         run: |
-          mkdir -p tiger
-          echo "Created folder tiger"
+          mkdir -p $FOLDER
+          echo "Created folder $FOLDER"
           ls -la
 
       - name: Download cat.txt
-        uses: actions/download-artifact@v4              # <-- switched to stable v4
+        uses: actions/download-artifact@v4
         with:
-          name: Downloaded_cat_${{ github.run_id }}
-          path: tiger
+          name: Downloaded_${{ env.ANIMAL }}_${{ github.run_id }}   # match name from first job
+          path: ${{ env.FOLDER }}
 
       - name: Verify files
-        run: ls -R tiger
+        run: ls -R $FOLDER
 
       - name: Read file
-        run: cat tiger/cat.txt
+        run: cat $FOLDER/cat.txt
