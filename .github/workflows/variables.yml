@@ -1,7 +1,6 @@
 name: Variables
 on:
-   schedule:
-     - cron: "10 4 * * *"
+   workflow_dispatch:
 env: 
             ANIMAL: cat
             BIRD: parrot
