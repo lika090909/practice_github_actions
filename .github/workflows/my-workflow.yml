@@ -1,22 +1,74 @@
 name: My First Workflow
 on:
-   workflow_dispatch:
+
+  workflow_dispatch:
+    inputs:
+      animal:
+        description: "Type of animal to write in file"
+        required: true
+        default: "cat"
+      folder:
+        description: "Name of the folder to create in the second job"
+        required: true
+        default: "tiger"
+
+env:
+  ANIMAL: ${{ github.event.inputs.animal }}
+  FOLDER: ${{ github.event.inputs.folder }}
 
 jobs:
-    first_job:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Hello cats
-              run: echo "The first command"
-            - name: Checkout 
-              uses: actions/checkout@v5
-              
-            - name: Hello dogs
-              run:  | 
-                  cat README.md
-                  sudo mkdir /cats
-                  echo "cats are the best" >> /cats/cat.txt
-                  chmod 644 cats/cat.txt
-                  ls /cats
+  first_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello cats
+        run: echo "The first command"
 
-            
+      - name: Checkout
+        uses: actions/checkout@v5
+              
+      - name: Hello dogs
+        run: |
+          cat README.md
+          sudo mkdir /cats
+          echo -e "\n${ANIMAL}s are the best" | sudo tee /cats/cat.txt
+          ls -l /cats
+
+      - name: Upload cat.txt
+        uses: actions/upload-artifact@v4
+        with:
+          name: Downloaded_${{ env.ANIMAL }}_${{ github.run_id }}   # artifact name uses input
+          path: /cats/cat.txt
+
+      - name: Executing Shell
+        run: |
+          pwd
+          ls -la
+          sudo chmod +x file.sh
+          ./file.sh
+
+  second_job:
+    needs: first_job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Prepare folder
+        run: |
+          mkdir -p $FOLDER
+          echo "Created folder $FOLDER"
+          ls -la
+
+      - name: Download cat.txt
+        uses: actions/download-artifact@v4
+        with:
+          name: Downloaded_${{ env.ANIMAL }}_${{ github.run_id }}   # match name from first job
+          path: ${{ env.FOLDER }}
+
+      - name: Verify files
+        run: ls -R $FOLDER
+
+      - name: Read file
+        run: cat $FOLDER/cat.txt
+      - name: ZEBRA folder creation
+        run: mkdir ZEBRA
