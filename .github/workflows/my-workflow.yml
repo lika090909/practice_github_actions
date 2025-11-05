@@ -72,3 +72,7 @@ jobs:
 
       - name: Create a folder
         run: mkdir CAAAAT
+
+      - name: ZEBRA folder creation
+        run: mkdir ZEBRA
+
