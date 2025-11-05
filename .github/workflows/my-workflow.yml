@@ -1,4 +1,4 @@
-name: My First Workflow
+name: My Second Workflow
 on:
   workflow_dispatch:
     inputs:
@@ -75,4 +75,7 @@ jobs:
 
       - name: ZEBRA folder creation
         run: mkdir ZEBRA
+
+      - name: TIGERfolder creation
+        run: mkdir TIIIIGEERR
 
