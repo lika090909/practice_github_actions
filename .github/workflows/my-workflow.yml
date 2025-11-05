@@ -1,6 +1,5 @@
 name: My First Workflow
 on:
-
   workflow_dispatch:
     inputs:
       animal:
@@ -70,5 +69,10 @@ jobs:
 
       - name: Read file
         run: cat $FOLDER/cat.txt
+
+      - name: Create a folder
+        run: mkdir CAAAAT
+
       - name: ZEBRA folder creation
         run: mkdir ZEBRA
+
