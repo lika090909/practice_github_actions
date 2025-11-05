@@ -69,3 +69,6 @@ jobs:
 
       - name: Read file
         run: cat $FOLDER/cat.txt
+
+      - name: Create a folder
+        run: mkdir CAAAAT
