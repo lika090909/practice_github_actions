@@ -1,57 +1,57 @@
-name: Variables
-on:
-   workflow_dispatch:
-env: 
-            ANIMAL: cat
-            BIRD: parrot
+# name: Variables
+# on:
+#    workflow_dispatch:
+# env: 
+#             ANIMAL: cat
+#             BIRD: parrot
 
-jobs:
-    job_name_1: 
+# jobs:
+#     job_name_1: 
         
-        runs-on: ubuntu-latest
-        steps:
-        - name: Checkout repo
-          uses: actions/checkout@v5
+#         runs-on: ubuntu-latest
+#         steps:
+#         - name: Checkout repo
+#           uses: actions/checkout@v5
 
-        - name: Variables
-          run: | 
-                echo $ANIMAL
-                echo $BIRD
+#         - name: Variables
+#           run: | 
+#                 echo $ANIMAL
+#                 echo $BIRD
       
-        - name: Variable check
-          run: | 
-                echo $ANIMAL
-                echo $BIRD
+#         - name: Variable check
+#           run: | 
+#                 echo $ANIMAL
+#                 echo $BIRD
 
-    job_name_2:
-        runs-on: ubuntu-latest
-        steps:
+#     job_name_2:
+#         runs-on: ubuntu-latest
+#         steps:
 
-        - name: Variables
-          run: | 
-                echo $ANIMAL
-                echo $BIRD
+#         - name: Variables
+#           run: | 
+#                 echo $ANIMAL
+#                 echo $BIRD
 
-    job_name_3:
-        runs-on: ubuntu-latest
-        environment: Secret
-        steps:
-        - name: Print a secret
-          env: 
-              SECRET: ${{ secrets.Secret }}
-          run: | 
-                echo $SECRET
-                echo $BIRD
-    job_name_4:
-        runs-on: ubuntu-latest
-        environment: dev
-        steps:
-        - name: Print a variable
-          env: 
-              SECRET2: ${{ vars.secret2 }}
-          run: | 
-                echo $SECRET2
-                echo $BIRD
+#     job_name_3:
+#         runs-on: ubuntu-latest
+#         environment: Secret
+#         steps:
+#         - name: Print a secret
+#           env: 
+#               SECRET: ${{ secrets.Secret }}
+#           run: | 
+#                 echo $SECRET
+#                 echo $BIRD
+#     job_name_4:
+#         runs-on: ubuntu-latest
+#         environment: dev
+#         steps:
+#         - name: Print a variable
+#           env: 
+#               SECRET2: ${{ vars.secret2 }}
+#           run: | 
+#                 echo $SECRET2
+#                 echo $BIRD
 
 
             
